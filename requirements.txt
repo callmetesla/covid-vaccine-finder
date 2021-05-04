@@ -1,5 +1,3 @@
 requests
-twilio
-sendgrid
 pytz
 slackclient

@@ -19,14 +19,13 @@ def _form_date(date):
 
 
 def get_date():
-    date = datetime.now(pytz.timezone('Asia/kolkata')) + timedelta(days=1)
+    date = datetime.now(pytz.timezone('Asia/kolkata'))
     return date
 
 
 def find_vaccine(district_codes):
     start_date = get_date()
-    dates = [start_date + timedelta(days=i) for i in range(7)]
-    formatted_dates = list(map(_form_date, dates))
+    formatted_dates = list(map(_form_date, [start_date]))
     found_stuff = defaultdict(dict)
     for date in formatted_dates:
         log.info(f"Date: {date}")

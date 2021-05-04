@@ -17,8 +17,8 @@ def populate_district_codes():
     fh = open('district_codes.md', 'w+')
     for state in state_info:
         df = pd.DataFrame(state_info[state])
-        fh.write(f'#{state}\n\n')
-        content = df.to_markdown(mode='a', index=False, tablefmt="grid")
+        fh.write(f'# {state}\n\n')
+        content = df.to_markdown(mode='a', index=False, tablefmt="github")
         fh.write(content)
         fh.write("\n\n")
 populate_district_codes()
