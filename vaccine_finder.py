@@ -31,7 +31,8 @@ def find_vaccine(district_codes):
         log.info(f"Date: {date}")
         for district in district_codes:
             log.info(f"================= district {district} ======================")
-            r = requests.get(API_URL, params={'district_id': district, 'date': date})
+            headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+            r = requests.get(API_URL, params={'district_id': district, 'date': date}, headers=headers)
             if r.status_code in [200, 201, 202]:
                 data = r.json()
                 if 'centers' in data:
@@ -52,6 +53,8 @@ def find_vaccine(district_codes):
                                         log.info(f"****************** {center_name} *********************")
                                 else:
                                     pass
+            else:
+                log.error("Failed to query cowin APIs")
         if len(found_stuff) > 0:
             return found_stuff
     return found_stuff
