@@ -45,11 +45,11 @@ def find_vaccine(district_codes):
                             for session in center['sessions']:
                                 if "min_age_limit" in session and session['min_age_limit'] < 45:
                                     log.debug(
-                                        f"****************** 18+ {center_name} Cap {session['available_capacity']} *********************")
-                                    if session['available_capacity'] > 0:
+                                        f"****************** 18+ {center_name} Cap {session['available_capacity_dose1']} *********************")
+                                    if session['available_capacity_dose1'] > 0:
                                         date = session['date']
                                         unique_key = f"D:{district}:C:{center_name}"
-                                        found_stuff[date][unique_key] = session['available_capacity']
+                                        found_stuff[date][unique_key] = session['available_capacity_dose1']
                                         log.info(f"****************** {center_name} *********************")
                                 else:
                                     pass
